@@ -1,4 +1,9 @@
 """Constants: starting cash, cache TTL, leaderboard schedule."""
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 COMMAND_PREFIX = "!"
 
@@ -15,7 +20,8 @@ DB_PATH = "data/market.db"
 # --- Weekly leaderboard ---
 LEADERBOARD_DAY = 4  # 0 = Monday ... 6 = Sunday
 LEADERBOARD_HOUR = 16  # local time, 24h
-LEADERBOARD_CHANNEL_ID = None  # TODO: set, or read from env
+_channel_id = os.getenv("LEADERBOARD_CHANNEL_ID")
+LEADERBOARD_CHANNEL_ID = int(_channel_id) if _channel_id else None
 
 # --- Display ---
 EMBED_COLOR = 0x2ECC71
