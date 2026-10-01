@@ -1,6 +1,10 @@
 """yfinance wrapper with a TTL price cache; blocking calls go through asyncio.to_thread."""
 
-# TODO: imports (asyncio, time, yfinance, config.PRICE_CACHE_TTL)
+import asyncio
+import time
+import yfinance as yf
+from config import PRICE_CACHE_TTL
+
 
 _cache: dict = {}  # symbol -> (price, fetched_at)
 
